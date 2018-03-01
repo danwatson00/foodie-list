@@ -1,12 +1,30 @@
 "use strict";
 
-console.log("foodie-list.js is here!");
+console.log("foodieList.js is here!");
 
 var restaurants = {};
 
-var cities = {};
+let restaurantInd = [];
+
+let parseData = (data) => {
+    data.restJson.forEach( (element) => {
+        restaurantInd.push(element);
+        console.log("in parseData:", restaurantInd);
+    });
+    console.log("in parseData:", restaurantInd);
+    /* console.log("element", element); */
+    console.log("data", data);
+    return restaurantInd;
+};
+
+
+restaurants.getRestaurants = () => {
+    console.log("in getRestaurants", restaurantInd);
+    return restaurantInd;
+};
 
 var xhrRequest = new XMLHttpRequest(); //establishes xhrRequest as the global variable for the XHR request
+
 restaurants.loadRestaurants = () => {   // states that load restaurants is a function on xhr??
     return new Promise((resolve, reject) => {   //first line of a Promise
         if (xhrRequest.status === 200){      //make sure xhr is successful
@@ -22,5 +40,6 @@ restaurants.loadRestaurants = () => {   // states that load restaurants is a fun
     
 };
 
+console.log("restaurants", restaurants);
 
-module.exports = { restaurants, cities };
+module.exports = { restaurants };
