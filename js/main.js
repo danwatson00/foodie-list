@@ -2,4 +2,4 @@
 
 console.log("main js here");
 
-let list = require("./foodie-list");
+let list = require("./foodieList");
