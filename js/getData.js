@@ -33,7 +33,7 @@ restaurants.loadRestaurants = () => {               // what is loadRestaurants?
         request.onload = function (){
             if (request.status === 200){                //make sure xhr is successful
                 let data = JSON.parse(request.responseText); //response text is a property of the variable xhr and it is parsing the data and placing it in data
-                console.log("data: ", data);              //console log the parsed data??
+                console.log("what is this data?", data);              //console log the parsed data??
                 resolve(parseData(data));        //resolve the request = fulfill the promise
             } else {
                 reject(new Error("XMLHttpRequest Error", request.statusText));  //reject the request
