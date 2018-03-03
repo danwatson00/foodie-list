@@ -15,10 +15,7 @@ let citiesItems = [];
 let parseData = (data) => {
     data.restJson.forEach((element) => {
         restaurantItems.push(element);
-        // console.log("in parseData:", restaurantItems);
     });
-    // console.log("in parseData:", restaurantItems);
-    // console.log("data", data);
     return restaurantItems;
 };
 
@@ -27,9 +24,9 @@ restaurants.getRestaurants = () => {
     return restaurantItems;
 };
 
-restaurants.loadRestaurants = () => {               // what is loadRestaurants?
-    return new Promise( (resolve, reject) => {         //first line of a Promise
-        let request = new XMLHttpRequest(); //establishes request as the global variable for the XHR request
+restaurants.loadRestaurants = () => {               // loadRestaurants is a function 
+    return new Promise( (resolve, reject) => {         //first line of the Promise
+        let request = new XMLHttpRequest(); //establishes request as the variable for the XHR request
         request.onload = function (){
             if (request.status === 200){                //make sure xhr is successful
                 let data = JSON.parse(request.responseText); //response text is a property of the variable xhr and it is parsing the data and placing it in data

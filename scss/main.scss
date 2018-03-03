@@ -1,0 +1,40 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:300|Lato');
+
+
+// Color Variables
+$primary-color: #3E50B4;
+$accent-color: #FF3F80;
+$box-backg: lightgray;
+
+// Font Variables
+$roboto: 'Roboto', sans serif;
+$lato: 'Lato', sans serif;
+
+h3 {
+    font-family: $roboto;
+    margin: .2em .2em .2em .2em;
+}
+
+h4 {
+    font-family: $lato;
+    margin: .2em .2em .2em .2em;
+}
+
+p {
+    font-family: $lato;
+    margin: .2em .2em .2em .2em;
+}
+
+//Restaurant div Grid
+#rest-display {
+    display: grid;
+    grid-template-columns: auto;
+    max-width: 500px;
+}
+
+.block-wrapper {
+    background-color: $box-backg;
+    border: 2px solid #93908F;
+    margin: .5em;
+}
