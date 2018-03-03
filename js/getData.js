@@ -66,12 +66,23 @@ cities.loadCities = () => {
                 console.log("city data:", data);
                 resolve(parseCities(data));
             } else {
-                reject(new Error("SMLHttpRequest Error", xhrRequest.statusText));
+                reject(new Error("XMLHttpRequest Error", xhrRequest.statusText));
             }
         };
         xhrRequest.open('GET', "../js/cities.json");
         xhrRequest.send();
     });
 };
+
+// function filterCities(cities, restaurants) {
+//     if (cities[i].id === restaurants[i].city_id) {
+//         return true;
+//     }
+//     invalidEntries++;
+//     return false;
+// }
+// var filteredCities = cities.filter(function (el) {
+//     return restaurants.city_id === cities.id
+// });
 
 module.exports = { restaurants, cities };
