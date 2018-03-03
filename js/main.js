@@ -16,11 +16,10 @@ let showItems = (restaurantData) => {
     });
 };
 
-
 let restPromise = db.restaurants.loadRestaurants()
 .then(
     (resolve) => {
-    console.log("then resolve", resolve);
+        console.log("then resolve", resolve);
         let sortedData = resolve.sort(function (a, b) {
             return b.my_rating - a.my_rating;
         });
@@ -31,17 +30,22 @@ let restPromise = db.restaurants.loadRestaurants()
 });
 
 //Cities Promise
-// let citiesPromise = db.cities.loadCities()
-// .then(
-//     (resolve) => 
-// )
 
- 
-// This builds each restaurant item or card
-// let buildRestItem = (rest) => {
-//     let block = "",
-//         wrapper = `<section class="block-wrapper" style="border: 2px solid #93908F; background-color:#000000">`,
-//         title = `<h3>${rest}.restaurant</h3>`;
-//         // return block;
-// };
-// module.exports = {allRestData};
+let showCities = (citiesData) => {
+    let citiesDisplay = document.getElementById("cities-display");
+    console.log("citiesData", citiesData);
+    citiesData.forEach((city) => {
+        citiesDisplay.innerHTML += `<section class="city-wrapper"><h3>${city.city}</h3></section>`;
+    });
+};
+
+let citiesPromise = db.cities.loadCities()
+.then(
+    (resolve) => {
+        console.log("cities resolve", resolve);
+        //possibly sort cities here
+        showCities(resolve);
+        return resolve;
+
+    }
+);
