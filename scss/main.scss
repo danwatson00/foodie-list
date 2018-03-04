@@ -21,11 +21,19 @@ $lato: 'Lato', san serif;
 
 //Element Styles
 html {
-    background: linear-gradient($bk-lt, $bk-drk);
+    background: linear-gradient($bk-drk, $bk-lt, $bk-drk);
+}
+
+body {
+    margin: 0;
+    margin-top: 0;
 }
 
 header {
     grid-row-start: 1;
+    width: 100%;
+    height: 100px;
+    
 }
 
 footer {
@@ -35,9 +43,11 @@ footer {
 
 h1 {
     font-family: $pfont;
-    text-align: center;
+    text-align: left;
     font-size: 4em;
     color: $white;
+    margin: 0.2em;
+    margin-left: .5em;
 }
 
 h2 {
@@ -71,7 +81,7 @@ h5 {
 
 #main-display {
     display: grid;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 33% auto;
     grid-row-start: 2;
 }
 

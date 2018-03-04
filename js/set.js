@@ -31,15 +31,21 @@ let restPromise = db.restaurants.loadRestaurants()
 //Cities Promise
 
 //Dont need to show this way anymore but THIS WORKS
+
+
+var newSelect = document.createElement('select');
+
 let showCities = (citiesData) => {
-    let citiesSelector = document.getElementById("selector");
-    console.log("citiesData", citiesData);
-    citiesData.forEach((city) => {
-        citiesSelector.innerHTML += `<option value="${city.city}>`;
-        citiesSelector.innerHTML += `<h4>${city.city}</h4>`;
-        citiesSelector.innerHTML += `</option>`;
-    });
+    
+    console.log("one city", citiesData[1].city);
+    for (var i = 0; i < citiesData.length; i++) {
+        newSelect.innerHTML += `<option value="${citiesData[i].city}>${citiesData[i].city}></option>`;
+        console.log("newSelect", newSelect);
+    }
 };
+
+// then append the select to an element in the dom
+document.getElementById("cities-display").appendChild(newSelect);
 
 let citiesPromise = db.cities.loadCities()
     .then(
@@ -53,11 +59,39 @@ let citiesPromise = db.cities.loadCities()
         }
     );
 
+//create cities select bar
+
+// var index = 0;
+
+// for (var city in citiesData) {
+//     var opt = document.createElement("option");
+//     opt.value = index;
+//     opt.innerHTML = city; // whatever property it has
+
+//     // then append it to the select element
+//     newSelect.appendChild(opt);
+//     index++;
+// }
+
+
+
+// var selectDiv = document.getElementById("cities-display");
+
+// var select = document.getElementById("cities-display"),
+//     option,
+//     i = 0,
+//     il = db.cities.length;
+
+// for (; i < il; i += 1) {
+//     option = document.createElement('option');
+//     option.setAttribute('city', db.cities[i].city);
+//     option.appendChild(document.createTextNode(db.cities[i].text));
+//     select.appendChild(option);
+// }
+
+
 
 // filter restaurants by city
-
-var invalidEntries = 0;
-
 
 // var selector = document.getElementById("selector");
 
