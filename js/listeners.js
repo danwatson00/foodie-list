@@ -4,10 +4,7 @@ console.log("listeners.js is here");
 let db = require("./getData");
 
 
-
-// // create an event listener for cities
-// document.getElementById("city-btn").addEventListener("click", db.filterByCity());
-
+//NOT USING THIS FOR ANYTHING RIGHT NOW
 // window.onload = function () {
 //     var x = document.getElementById("city-btn");
 //     // x.addEventListener("mouseover", changeFontColor);
