@@ -4,21 +4,23 @@ console.log("set.js is here");
 
 let db = require("./getData"); 
 
+
+
 //show items function prints data to the DOM
 let showItems = (restaurantData) => {
     let restDisplay = document.getElementById("rest-display");
-    console.log("restaurantData", restaurantData);
     restaurantData.forEach((restaurant) => {
-        // let restBlock = buildRestItem(restaurant);
         restDisplay.innerHTML += `<section class="block-wrapper"><h2 class="rest-name">${restaurant.restaurant}</h2><h3 class="rating-btn">My Rating<br/>${restaurant.my_rating}</h3><h5 class="visited-date">Last Visited: ${restaurant.date_visited}</h5></section>`;
 
     });
 };
 
+
+
+//Restaurant Promise
 let restPromise = db.restaurants.loadRestaurants()
     .then(
         (resolve) => {
-            console.log("then resolve", resolve);
             let sortedData = resolve.sort(function (a, b) {
                 return b.my_rating - a.my_rating;
             });
@@ -28,12 +30,14 @@ let restPromise = db.restaurants.loadRestaurants()
             console.log("Oops Something went wrong", reject);
         });
 
-//Cities Promise
 
+
+
+//Cities Promise
 var selectDiv = document.getElementById("selector");
 
 let showCities = (citiesData) => {
-    var x = document.createElement("SELECT");
+    var x = document.createElement("select");
     x.setAttribute("id", "mySelect");
     selectDiv.appendChild(x);
 
@@ -46,11 +50,12 @@ let showCities = (citiesData) => {
     }
 };
 
+
 let citiesPromise = db.cities.loadCities()
     .then(
         (resolve) => {
             console.log("cities resolve", resolve);
-            //possibly sort cities here
+            //could filter cities possibly go here
             showCities(resolve);
             console.log("I hope this works", resolve[1].id);
             return resolve;
@@ -58,12 +63,14 @@ let citiesPromise = db.cities.loadCities()
         }
     );
 
+
+
 //Filter Restaurants by City
 var invalidEntries;
 
-// // create an event listener for cities
-document.getElementById("SELECT").addEventListener("change", filterCities);
-function filterCities(cities, restaurants) {
+// // create an event listener for cities THIS DOESNT WORK
+document.getElementById("select").addEventListener("change", filterCities);
+function filterCities(this.id, restaurants) () => {
     for (var i = 0; i < restaurants.length; i++) {
         if (cities.id === restaurants[i].city_id) {
             return true;
@@ -73,18 +80,8 @@ function filterCities(cities, restaurants) {
     }
 }
 
+// var arrByID = restaurants.filter(db.filterCities);  this doesnt work
 
-// filter restaurants by city
+console.log('Filtered Array\n', arrByID);
 
-// var selector = document.getElementById("selector");
-
-// document.getElementById("rest-display").innerHTML = selector.addEventListener("click", db.filterCities());
-
-
-
-// var arrByID = restaurants.filter(db.filterCities);
-
-// console.log('Filtered Array\n', arrByID);
-
-
-// console.log('Number of Invalid Entries = ', invalidEntries);
+console.log('Number of Invalid Entries = ', invalidEntries);

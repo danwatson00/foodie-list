@@ -19,7 +19,6 @@ let parseData = (data) => {
 };
 
 restaurants.getRestaurants = () => {
-    console.log("in getRestaurants", restaurantItems);
     return restaurantItems;
 };
 
@@ -29,7 +28,6 @@ restaurants.loadRestaurants = () => {
         request.onload = function (){
             if (request.status === 200){                //makes sure xhr is successful
                 let data = JSON.parse(request.responseText); //response text is a property of the variable xhr and it is parsing the data and placing it in data
-                console.log("what is this data?", data);              //console log the parsed data??
                 resolve(parseData(data));        //resolve the request = fulfill the promise
             } else {
                 reject(new Error("XMLHttpRequest Error", request.statusText));  //reject the request due to error
@@ -44,7 +42,6 @@ restaurants.loadRestaurants = () => {
 //GET CITIES DATA
 
 cities.getCities = () => {
-    console.log("in getCities", citiesItems);
     return citiesItems;
 };
 
@@ -62,7 +59,6 @@ cities.loadCities = () => {
         xhrRequest.onload = function (){
             if (xhrRequest.status === 200){
                 let data = JSON.parse(xhrRequest.responseText);
-                console.log("city data:", data);
                 resolve(parseCities(data));
             } else {
                 reject(new Error("XMLHttpRequest Error", xhrRequest.statusText));
