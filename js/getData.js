@@ -76,18 +76,21 @@ cities.loadCities = () => {
 //Filter Restaurants by City
 var invalidEntries;
 
-// create an event listener for cities
-document.getElementById("city-btn").addEventListener("click", function(){ filterCities(this.cities, this.restaurants); });
+// // create an event listener for cities
+// document.getElementById("city-btn").addEventListener("click", function(){ filterCities(this.cities, this.restaurants); });
 
 function filterCities(cities, restaurants) {
     for (var i = 0; i < restaurants.length; i++) {
-        if (cities[i].id === restaurants[i].city_id) {
+        if (cities.id === restaurants[i].city_id) {
             return true;
-        }
+        }else
             invalidEntries++;
             return false;
     }
 }
+
+// filterCities();
+
     // var filteredCities = cities.filter(function (filterCities) {
     //     return restaurants.city_id === cities.id;
     // });

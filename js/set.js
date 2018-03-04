@@ -10,7 +10,7 @@ let showItems = (restaurantData) => {
     console.log("restaurantData", restaurantData);
     restaurantData.forEach((restaurant) => {
         // let restBlock = buildRestItem(restaurant);
-        restDisplay.innerHTML += `<section class="block-wrapper"><h3>${restaurant.restaurant}</h3><h4><strong>My Rating: ${restaurant.my_rating}</strong></h4><p>Last Visited: ${restaurant.date_visited}</p></section>`;
+        restDisplay.innerHTML += `<section class="block-wrapper"><h2 class="rest-name">${restaurant.restaurant}</h2><h3 class="rating-btn">My Rating<br/>${restaurant.my_rating}</h3><h5 class="visited-date">Last Visited: ${restaurant.date_visited}</h5></section>`;
 
     });
 };
@@ -30,11 +30,14 @@ let restPromise = db.restaurants.loadRestaurants()
 
 //Cities Promise
 
+//Dont need to show this way anymore but THIS WORKS
 let showCities = (citiesData) => {
-    let citiesDisplay = document.getElementById("cities-display");
+    let citiesSelector = document.getElementById("selector");
     console.log("citiesData", citiesData);
     citiesData.forEach((city) => {
-        citiesDisplay.innerHTML += `<section class="city-wrapper" "city-btn"><h3>${city.city}</h3></section>`;
+        citiesSelector.innerHTML += `<option value="${city.city}>`;
+        citiesSelector.innerHTML += `<h4>${city.city}</h4>`;
+        citiesSelector.innerHTML += `</option>`;
     });
 };
 
@@ -55,16 +58,11 @@ let citiesPromise = db.cities.loadCities()
 
 var invalidEntries = 0;
 
-// function filterCities(cities, restaurants) {
-//     if (cities[i].id === restaurants[i].city_id) {
-//         return true;
-//     }
-//     invalidEntries++;
-//     return false;
-// }
-// var filteredCities = cities.filter(function (el) {
-//     return restaurants.city_id === cities.id;
-// });
+
+// var selector = document.getElementById("selector");
+
+// document.getElementById("rest-display").innerHTML = selector.addEventListener("click", db.filterCities());
+
 
 
 // var arrByID = restaurants.filter(db.filterCities);
