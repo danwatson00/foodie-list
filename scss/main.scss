@@ -1,40 +1,131 @@
 // Google Fonts
-@import url('https://fonts.googleapis.com/css?family=Roboto:300|Lato');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300|Cabin:500,700|Lato');
 
 
 // Color Variables
 $primary-color: #3E50B4;
-$accent-color: #FF3F80;
-$box-backg: lightgray;
+$accent-color: #E38B44;
+$dkgr: 73676F;
+$ltgr: #AEAAA6;
+$bk-drk: #291620;
+$bk-lt: #963e30;
+$white: white;
+ $lt: #E0D7C5;
 
 // Font Variables
-$roboto: 'Roboto', sans serif;
-$lato: 'Lato', sans serif;
+$sfont: 'Roboto', sans serif;
+$pfont: 'Cabin', sans serif;
+$hfont: 'Cabin', san serif;
+$lato: 'Lato', san serif;
+
+
+//Element Styles
+html {
+    background: linear-gradient($bk-lt, $bk-drk);
+}
+
+header {
+    grid-row-start: 1;
+}
+
+footer {
+    background-color: $bk-drk;
+    grid-row-start: 3;
+}
+
+h1 {
+    font-family: $pfont;
+    text-align: center;
+    font-size: 4em;
+    color: $white;
+}
+
+h2 {
+    font-family: $lato;
+    margin: .2em .2em .2em .2em;
+}
 
 h3 {
-    font-family: $roboto;
+    font-family: $sfont;
     margin: .2em .2em .2em .2em;
+    text-align: center;
 }
 
 h4 {
-    font-family: $lato;
+    font-family: $sfont;
     margin: .2em .2em .2em .2em;
 }
 
-p {
-    font-family: $lato;
+h5 {
+    font-family: $sfont;
     margin: .2em .2em .2em .2em;
+    align-self: center;
+    justify-self: center;
 }
 
-//Restaurant div Grid
-#rest-display {
+//Grids
+#site-grid {
     display: grid;
-    grid-template-columns: auto;
-    max-width: 500px;
+    grid-template-rows: 15% 70% 15%
+}
+
+#main-display {
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-row-start: 2;
 }
 
 .block-wrapper {
-    background-color: $box-backg;
-    border: 2px solid #93908F;
+    display: grid;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    background-color: $white;
+    border: 1px solid $dkgr;
     margin: .5em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
+
+.rest-name {
+    grid-column-start: 1;
+}
+.rating-btn {
+    grid-column-start: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    justify-self: center;
+}
+
+.visited-date {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    align-self: start;
+    justify-self: start;
+
+}
+//
+#selector {
+    width: 100%;
+    height: 30px;
+    color: white;
+    text-align: center;
+    font-family: $pfont;
+    background-color: $bk-drk;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-appearance: none;
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+}
+// .city-wrapper {
+//     background-color: white;
+// }
+
+// .city-btn {
+//     background-color: white;
+// }
+
+
+
+
