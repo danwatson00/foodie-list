@@ -30,22 +30,21 @@ let restPromise = db.restaurants.loadRestaurants()
 
 //Cities Promise
 
-//Dont need to show this way anymore but THIS WORKS
-
-
-var newSelect = document.createElement('select');
+var selectDiv = document.getElementById("selector");
 
 let showCities = (citiesData) => {
-    
-    console.log("one city", citiesData[1].city);
+    var x = document.createElement("SELECT");
+    x.setAttribute("id", "mySelect");
+    selectDiv.appendChild(x);
+
     for (var i = 0; i < citiesData.length; i++) {
-        newSelect.innerHTML += `<option value="${citiesData[i].city}>${citiesData[i].city}></option>`;
-        console.log("newSelect", newSelect);
+    var z = document.createElement("option");
+    z.setAttribute("value", `${citiesData[i].id}`);
+    var t = document.createTextNode(`${citiesData[i].city}`);
+    z.appendChild(t);
+    document.getElementById("mySelect").appendChild(z);
     }
 };
-
-// then append the select to an element in the dom
-document.getElementById("cities-display").appendChild(newSelect);
 
 let citiesPromise = db.cities.loadCities()
     .then(
@@ -59,36 +58,20 @@ let citiesPromise = db.cities.loadCities()
         }
     );
 
-//create cities select bar
+//Filter Restaurants by City
+var invalidEntries;
 
-// var index = 0;
-
-// for (var city in citiesData) {
-//     var opt = document.createElement("option");
-//     opt.value = index;
-//     opt.innerHTML = city; // whatever property it has
-
-//     // then append it to the select element
-//     newSelect.appendChild(opt);
-//     index++;
-// }
-
-
-
-// var selectDiv = document.getElementById("cities-display");
-
-// var select = document.getElementById("cities-display"),
-//     option,
-//     i = 0,
-//     il = db.cities.length;
-
-// for (; i < il; i += 1) {
-//     option = document.createElement('option');
-//     option.setAttribute('city', db.cities[i].city);
-//     option.appendChild(document.createTextNode(db.cities[i].text));
-//     select.appendChild(option);
-// }
-
+// // create an event listener for cities
+document.getElementById("SELECT").addEventListener("change", filterCities);
+function filterCities(cities, restaurants) {
+    for (var i = 0; i < restaurants.length; i++) {
+        if (cities.id === restaurants[i].city_id) {
+            return true;
+        } else
+            invalidEntries++;
+        return false;
+    }
+}
 
 
 // filter restaurants by city
