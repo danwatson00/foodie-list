@@ -118,9 +118,10 @@ h5 {
 #mySelect {
     width: 90%;
     height: 40px;
+    margin-left: .5em;
     color: white;
-    text-align: center;
-    font-size: 1em;
+    align-content: center;
+    font-size: 1.5em;
     font-family: $pfont;
     background-color: $bk-drk;
     -webkit-border-radius: 20px;
@@ -128,6 +129,11 @@ h5 {
     border-radius: 20px;
     -webkit-appearance: none;
     background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+}
+
+#welcome-div h4 {
+    color: white;
+    margin: 1em;
 }
 // .city-wrapper {
 //     background-color: white;
