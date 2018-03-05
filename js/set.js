@@ -4,7 +4,7 @@ console.log("set.js is here");
 
 let db = require("./getData"); 
 
-
+let selectId;
 
 //show items function prints data to the DOM
 let showItems = (restaurantData) => {
@@ -14,7 +14,6 @@ let showItems = (restaurantData) => {
 
     });
 };
-
 
 
 //Restaurant Promise
@@ -58,30 +57,48 @@ let citiesPromise = db.cities.loadCities()
             //could filter cities possibly go here
             showCities(resolve);
             console.log("I hope this works", resolve[1].id);
+
+            db.restaurants.loadRestaurants()
+                .then((data) => {
+                    var mySelect = document.getElementById("mySelect");
+                    mySelect.addEventListener("change", function (event) {
+                        var selectId = mySelect.options[mySelect.selectedIndex].value;
+                        console.log("you selected", selectId);
+                        console.log("city info", mySelect);
+                        filterCities(selectId, resolve);
+                        // db.restaurants.loadRestaurants();
+
+                    });
+                });
+
             return resolve;
 
         }
     );
 
-
-
 //Filter Restaurants by City
 var invalidEntries;
 
 // // create an event listener for cities THIS DOESNT WORK
-document.getElementById("select").addEventListener("change", filterCities);
-function filterCities(this.id, restaurants) () => {
-    for (var i = 0; i < restaurants.length; i++) {
-        if (cities.id === restaurants[i].city_id) {
-            return true;
-        } else
-            invalidEntries++;
-        return false;
-    }
+// document.getElementById("selector").addEventListener("change", filterCities);
+function filterCities(selectId, resolve) {
+    var filteredArray = resolve.filter(function() {
+        return resolve.city_id.indexOf(selectId) > -1;
+    });
 }
 
-// var arrByID = restaurants.filter(db.filterCities);  this doesnt work
+//     for (var i = 0; i < restaurants.length; i++) {
+//         if (cityId === restaurants[i].city_id) {
+//             return true;
+//         } else
+//             invalidEntries++;
+//             console.log('Number of Invalid Entries = ', invalidEntries);
+//         return false;
+//     }
+// }
 
-console.log('Filtered Array\n', arrByID);
+// // var arrByID = restaurants.filter(db.filterCities);  this doesnt work
 
-console.log('Number of Invalid Entries = ', invalidEntries);
+// console.log('Filtered Array\n', arrByID);
+
+// console.log('Number of Invalid Entries = ', invalidEntries);
